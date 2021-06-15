@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if usid == null %}
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+    <div class="container">
+    <h2>Please Login or Register</h2>
+    <p>To access.</p>
+    </div>
+</div>
+{% endif %}
+{% for us in usid %}
+<hr>
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+    <div class="container">
+    <h1>Pdf Details</h1>
+    <h3>Past History of uploaded documents .</h3>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <table class="table table-striped">
+    <tbody>
+    <tr class="bg-primary">
+    <th>Date and Time</th>
+    <th>User Name</th>
+    <th>Pdf Name</th>
+    <th>Pdf</th>
+    <th>Range</th>
+    <th>Mp3 Name</th>
+    <th>Mp3</th>
+    </tr>
+    {% for udata in pdft %}
+    <tr>
+    <td>{{udata.ddt}}</td>
+    <td>{{udata.uu.name}}</td>
+    <td>{{udata.ppname}}</td>
+    <td><a href="{{ udata.ppdf.url }}" target="_blank">Open</a></td>
+    <td>{{udata.aarange}}</td>
+    <td>{{udata.aaname}}</td>
+    <td><audio controls src="{{ udata.mmp3.url }}"></audio></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <hr>
+    
+            
+</div>
+    </div>
+<br><br><br><br><br>
+
+{% endfor %}
+
+{% endblock %}
+
